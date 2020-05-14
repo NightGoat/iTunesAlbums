@@ -10,7 +10,6 @@ import android.view.inputmethod.EditorInfo
 import android.widget.Toast
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.fragment_search.*
 import ru.nightgoat.itunesalbums.R
@@ -67,6 +66,16 @@ class SearchFragment : Fragment() {
 
             resultListLiveData.observe(viewLifecycleOwner, Observer {
                 listAdapter.setList(it)
+            })
+
+            isProgressBarVisibleLiveData.observe(viewLifecycleOwner, Observer {
+                if (it == true) {
+                    frag_search_progress.visibility = View.VISIBLE
+                    frag_search_recycler.visibility = View.GONE
+                } else {
+                    frag_search_progress.visibility = View.GONE
+                    frag_search_recycler.visibility = View.VISIBLE
+                }
             })
         }
     }

@@ -15,7 +15,8 @@ interface ItunesSearchApi {
     fun getAlbumList(
         @Query("term") album : String,
         @Query("media") media: String = "music",
-        @Query("entity") entity : String = "album"
+        @Query("entity") entity : String = "album",
+        @Query("attribute") attribute : String = "albumTerm"
     ) : Single<ApiAnswer>
 
     @GET("https://itunes.apple.com/lookup?entity=song")

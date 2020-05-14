@@ -1,6 +1,5 @@
 package ru.nightgoat.itunesalbums.presentation.search
 
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
@@ -17,6 +16,9 @@ class SearchViewModel : BaseViewModel() {
     val toastLiveData : MutableLiveData<String> by lazy {
         MutableLiveData<String>()
     }
+    val isProgressBarVisibleLiveData : MutableLiveData<Boolean> by lazy {
+        MutableLiveData<Boolean>()
+    }
 
     var repository: Repository = RepositoryProvider.provideRepository()
 
@@ -26,14 +28,22 @@ class SearchViewModel : BaseViewModel() {
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .map {
-                    it.results
+                    it.results.sortedBy { results ->
+                        results.collectionName
+                    }
+                }
+                .doOnSubscribe {
+                    isProgressBarVisibleLiveData.value = true
                 }
                 .subscribe({
                     resultListLiveData.value = it
+                    isProgressBarVisibleLiveData.value = false
                 }, {
                     it.printStackTrace()
-                    toastLiveData.postValue(it.message)
+                    toastLiveData.value = it.message
+                    isProgressBarVisibleLiveData.value = false
                 })
+
         )
     }
 }
