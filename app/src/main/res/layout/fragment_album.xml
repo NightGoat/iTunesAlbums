@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".AlbumFragment">
+
+   <com.google.android.material.appbar.MaterialToolbar
+       android:id="@+id/frag_album_toolbar"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       app:layout_constraintStart_toStartOf="parent"
+       app:layout_constraintTop_toTopOf="parent"
+       app:title="Обзор"
+       app:navigationIcon="@drawable/ic_chevron_left_black_24dp"
+       app:titleTextColor="@color/colorAccent"
+       />
+
+    <ImageView
+        android:id="@+id/frag_album_cover"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/frag_album_toolbar"
+        android:contentDescription="@string/album_cover"
+        tools:src="@drawable/ic_launcher_background"
+        android:layout_marginLeft="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"/>
+
+    <TextView
+        android:id="@+id/frag_album_name"
+        app:layout_constraintStart_toEndOf="@id/frag_album_cover"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/frag_album_cover"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        tools:text="The Information (Bonus Video Version)"
+        android:textSize="16sp"
+        android:textColor="@android:color/black"
+        style="@style/Text"/>
+
+    <TextView
+        android:id="@+id/frag_album_artist"
+        app:layout_constraintStart_toStartOf="@id/frag_album_name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/frag_album_name"
+        tools:text="Beck"
+        style="@style/Text.Accent"/>
+
+    <TextView
+        android:id="@+id/frag_album_genre"
+        app:layout_constraintStart_toStartOf="@id/frag_album_artist"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/frag_album_artist"
+        tools:text="Alternative"
+        style="@style/Text"
+        />
+
+    <TextView
+        android:id="@+id/frag_album_dot"
+        android:text="@string/dot_in_the_middle"
+        app:layout_constraintTop_toTopOf="@id/frag_album_genre"
+        app:layout_constraintStart_toEndOf="@id/frag_album_genre"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        style="@style/Text"
+        />
+
+    <TextView
+        android:id="@+id/frag_album_year"
+        tools:text="2010"
+        app:layout_constraintTop_toTopOf="@id/frag_album_genre"
+        app:layout_constraintStart_toEndOf="@id/frag_album_dot"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        style="@style/Text"
+        />
+
+    <View
+        android:id="@+id/frag_album_line"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@android:color/darker_gray"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/frag_album_cover"
+        android:layout_margin="16dp"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/frag_album_line"
+        tools:listitem="@layout/item_track"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
