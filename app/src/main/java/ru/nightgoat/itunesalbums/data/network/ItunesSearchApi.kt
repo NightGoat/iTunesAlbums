@@ -11,9 +11,16 @@ import ru.nightgoat.itunesalbums.utils.BASE_URL
 
 interface ItunesSearchApi {
 
-    @GET("search?media=music&entity=album")
+    @GET("search?")
     fun getAlbumList(
-        @Query("term") album : String
+        @Query("term") album : String,
+        @Query("media") media: String = "music",
+        @Query("entity") entity : String = "album"
+    ) : Single<ApiAnswer>
+
+    @GET("https://itunes.apple.com/lookup?entity=song")
+    fun getAlbum(
+        @Query("id") albumId: Long
     ) : Single<ApiAnswer>
 
     companion object {
