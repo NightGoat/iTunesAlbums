@@ -41,6 +41,10 @@ dependencies {
     //Retrofit
     //noinspection GradleDependency
     implementation "com.squareup.retrofit2:retrofit:2.6.4"
+    //noinspection GradleDependency
+    implementation "com.squareup.retrofit2:adapter-rxjava2:2.6.4"
+    //noinspection GradleDependency
+    implementation "com.squareup.retrofit2:converter-gson:2.6.4"
 
     //Glide
     //noinspection GradleDependency

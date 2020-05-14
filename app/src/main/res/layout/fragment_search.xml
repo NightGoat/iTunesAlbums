@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".SearchFragment"
+    tools:context=".presentation.search.SearchFragment"
     android:orientation="vertical">
 
     <com.google.android.material.textfield.TextInputLayout
@@ -17,8 +17,11 @@
         >
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/frag_search_edit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:inputType="textCapSentences"
+            android:imeOptions="actionSearch"
             />
 
     </com.google.android.material.textfield.TextInputLayout>

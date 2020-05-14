@@ -1,7 +1,9 @@
-package ru.nightgoat.itunesalbums
+package ru.nightgoat.itunesalbums.presentation
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import ru.nightgoat.itunesalbums.R
+import ru.nightgoat.itunesalbums.presentation.search.SearchFragment
 
 class MainActivity : AppCompatActivity() {
 
@@ -9,7 +11,10 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         supportFragmentManager.beginTransaction()
-            .add(R.id.main_fragment_container, SearchFragment.newInstance())
+            .add(
+                R.id.main_fragment_container,
+                SearchFragment.newInstance()
+            )
             .commit()
     }
 }

@@ -1,4 +1,4 @@
-package ru.nightgoat.itunesalbums
+package ru.nightgoat.itunesalbums.presentation.search
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -6,27 +6,32 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
+import ru.nightgoat.itunesalbums.R
 
 
-class AlbumFragment : Fragment() {
+class SearchFragment : Fragment() {
 
     companion object {
-        fun newInstance() = AlbumFragment()
+        fun newInstance() = SearchFragment()
     }
 
-    private lateinit var viewModel: AlbumViewModel
+    private lateinit var viewModel: SearchViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_album, container, false)
+        return inflater.inflate(R.layout.fragment_search, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory())
-            .get(AlbumViewModel::class.java)
+            .get(SearchViewModel::class.java)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
     }
 
 }
