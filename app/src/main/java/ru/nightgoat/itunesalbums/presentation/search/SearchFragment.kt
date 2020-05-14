@@ -11,8 +11,10 @@ import android.widget.Toast
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.fragment_search.*
 import ru.nightgoat.itunesalbums.R
+import ru.nightgoat.itunesalbums.presentation.album.ListAdapter
 
 
 class SearchFragment : Fragment() {
@@ -22,6 +24,7 @@ class SearchFragment : Fragment() {
     }
 
     private val viewModel: SearchViewModel by activityViewModels()
+    private val listAdapter = ListAdapter()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -34,6 +37,15 @@ class SearchFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         observeViewModelLiveData()
         searchClickListener()
+        initRecycler()
+
+    }
+
+    private fun initRecycler() {
+        frag_search_recycler.apply {
+            layoutManager = LinearLayoutManager(context)
+            adapter = listAdapter
+        }
     }
 
     private fun searchClickListener() {
@@ -48,9 +60,14 @@ class SearchFragment : Fragment() {
     }
 
     private fun observeViewModelLiveData() {
-        viewModel.toastLiveData.observe(viewLifecycleOwner, Observer {
-            Toast.makeText(context, it, Toast.LENGTH_SHORT).show()
-        })
-    }
+        with(viewModel) {
+            toastLiveData.observe(viewLifecycleOwner, Observer {
+                Toast.makeText(context, it, Toast.LENGTH_SHORT).show()
+            })
 
+            resultListLiveData.observe(viewLifecycleOwner, Observer {
+                listAdapter.setList(it)
+            })
+        }
+    }
 }
