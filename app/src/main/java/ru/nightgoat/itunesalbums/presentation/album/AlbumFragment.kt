@@ -1,31 +1,31 @@
 package ru.nightgoat.itunesalbums.presentation.album
 
-import android.opengl.Visibility
 import android.os.Bundle
-import androidx.fragment.app.Fragment
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.fragment_album.*
-import kotlinx.android.synthetic.main.fragment_search.*
 import ru.nightgoat.itunesalbums.R
-import ru.nightgoat.itunesalbums.presentation.MainActivity
-import ru.nightgoat.itunesalbums.presentation.search.FragmentCallbacks
 import ru.nightgoat.itunesalbums.presentation.search.FragmentChanger
-import ru.nightgoat.itunesalbums.presentation.search.SearchFragment
-import ru.nightgoat.itunesalbums.presentation.search.SearchViewModel
 
-
+/**
+ * Фрагмент с описанием альбома и списком его треков. Создается при клике на альбом в списке
+ * [ru.nightgoat.itunesalbums.presentation.search.SearchFragment]
+ */
 class AlbumFragment : Fragment() {
 
     companion object {
         fun newInstance() = AlbumFragment()
+
+        val TAG = AlbumFragment::class.java.name
     }
 
     private val viewModel: AlbumViewModel by activityViewModels()
@@ -50,9 +50,13 @@ class AlbumFragment : Fragment() {
         frag_album_recycler.apply {
             layoutManager = LinearLayoutManager(context)
             adapter = listAdapter
+            addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))
         }
     }
 
+    /**
+     * Запрос для вью модели получить описание альбома.
+     */
     private fun getAlbum() {
         arguments?.let {
             viewModel.getAlbumInfo(it.getLong("albumId"))
@@ -78,12 +82,17 @@ class AlbumFragment : Fragment() {
 
             isProgressBarVisibleLiveData.observe(viewLifecycleOwner, Observer {
                 if (it == true) {
-                    frag_album_group.visibility = View.GONE
+                    frag_album_group.visibility = View.INVISIBLE
+                    frag_album_group.requestLayout()
                     frag_album_progressBar.visibility = View.VISIBLE
                 } else {
                     frag_album_group.visibility = View.VISIBLE
-                    frag_album_progressBar.visibility = View.GONE
+                    frag_album_group.requestLayout()
+                    frag_album_progressBar.visibility = View.INVISIBLE
                 }
+                Log.d(TAG, "isProgressBarVisible.value = ${isProgressBarVisibleLiveData.value}" +
+                        ", group.visibility = ${frag_album_group.visibility}" +
+                        ", progressBar.visibility = ${frag_album_progressBar.visibility}")
             })
         }
     }
@@ -91,7 +100,7 @@ class AlbumFragment : Fragment() {
     private fun backBtnClickListener() {
         frag_album_toolbar.setNavigationOnClickListener {
             val mainActivity = activity as FragmentChanger
-            mainActivity.changeFragment(SearchFragment.newInstance())
+            mainActivity.popBackStack()
         }
     }
 }

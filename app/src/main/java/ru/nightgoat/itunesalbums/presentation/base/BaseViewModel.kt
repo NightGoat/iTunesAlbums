@@ -4,8 +4,13 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import io.reactivex.disposables.CompositeDisposable
 import ru.nightgoat.itunesalbums.data.model.Result
+import ru.nightgoat.itunesalbums.domain.Repository
+import ru.nightgoat.itunesalbums.domain.RepositoryProvider
 
 abstract class BaseViewModel : ViewModel() {
+
+    var repository: Repository = RepositoryProvider.provideRepository()
+
     val resultListLiveData : MutableLiveData<List<Result>> by lazy {
         MutableLiveData<List<Result>>()
     }

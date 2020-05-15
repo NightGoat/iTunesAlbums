@@ -5,7 +5,11 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import ru.nightgoat.itunesalbums.data.model.Result
 
-class AlbumListAdapter()
+/**
+ * Адаптер для RecyclerView, который содержит список песен.
+ * @author NightGoat
+ */
+class AlbumListAdapter
     : RecyclerView.Adapter<AlbumViewHolder>() {
 
     private var list: List<Result> = listOf()

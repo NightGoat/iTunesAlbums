@@ -9,8 +9,21 @@ import retrofit2.http.Query
 import ru.nightgoat.itunesalbums.data.model.ApiAnswer
 import ru.nightgoat.itunesalbums.utils.BASE_URL
 
+/**
+ * Интерфейс взаимодействия с iTunes Api
+ * @author NightGoat
+ */
 interface ItunesSearchApi {
 
+    /**
+     * Метод получения списка альбомов
+     * @param album Название альбома
+     * @param media Тип получаемого медиа (например фильм). Установлен как музыка
+     * @param entity Уточняет вид медиа (актер фильма). Установлен как альбом
+     * @param attribute Атрибут запроса, можно указать если нужен конкретно альбом, а не все что
+     * связано с этим названием.
+     * @return Single<ApiAnswer>
+     */
     @GET("search?")
     fun getAlbumList(
         @Query("term") album : String,
@@ -19,9 +32,15 @@ interface ItunesSearchApi {
         @Query("attribute") attribute : String = "albumTerm"
     ) : Single<ApiAnswer>
 
-    @GET("https://itunes.apple.com/lookup?entity=song")
+    /**
+     * Метод получения подробной информации об альбоме.
+     * @param albumId id альбома
+     * @param entity Уточняет вид медиа (актер фильма). Установлен как песни
+     */
+    @GET("lookup?")
     fun getAlbum(
-        @Query("id") albumId: Long
+        @Query("id") albumId: Long,
+        @Query("entity") entity : String = "song"
     ) : Single<ApiAnswer>
 
     companion object {

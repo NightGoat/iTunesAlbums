@@ -1,15 +1,25 @@
 package ru.nightgoat.itunesalbums.presentation.album
 
+import android.util.Log
 import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.schedulers.Schedulers
-import ru.nightgoat.itunesalbums.domain.Repository
-import ru.nightgoat.itunesalbums.domain.RepositoryProvider
 import ru.nightgoat.itunesalbums.presentation.base.BaseViewModel
 
+/**
+ * ViewModel для [AlbumFragment]. Делает запрос описания альбома.
+ * @see [BaseViewModel]
+ * @author NightGoat
+ */
 class AlbumViewModel : BaseViewModel() {
 
-    var repository: Repository = RepositoryProvider.provideRepository()
+    companion object {
+        val TAG = AlbumViewModel::class.java.name
+    }
 
+    /**
+     * Метод получения описания альбома. CompositeDisposable.dispose() и LiveData в BaseViewModel
+     * @param albumId id альбома
+     * @author NightGoat
+     */
     fun getAlbumInfo(albumId: Long) {
         compositeDisposable.add(
             repository.getAlbum(albumId)
@@ -19,13 +29,17 @@ class AlbumViewModel : BaseViewModel() {
                 }
                 .doOnSubscribe {
                     isProgressBarVisibleLiveData.value = true
+                    Log.d(TAG, "doOnSubscribe: ${isProgressBarVisibleLiveData.value}")
+                }
+                .doFinally {
+                    isProgressBarVisibleLiveData.value = false
+                    Log.d(TAG, "doFinally: ${isProgressBarVisibleLiveData.value}")
                 }
                 .subscribe({
                     resultListLiveData.value = it
-                    isProgressBarVisibleLiveData.value = false
                 }, {
+                    it.printStackTrace()
                     toastLiveData.value = it.message
-                    isProgressBarVisibleLiveData.value = false
                 })
         )
     }
