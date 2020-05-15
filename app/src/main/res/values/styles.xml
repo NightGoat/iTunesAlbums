@@ -17,6 +17,6 @@
     </style>
 
     <style name="Text.Accent">
-        <item name="android:textColor">@color/colorAccent</item>
+        <item name="android:textColor">@color/colorPrimary</item>
     </style>
 </resources>
