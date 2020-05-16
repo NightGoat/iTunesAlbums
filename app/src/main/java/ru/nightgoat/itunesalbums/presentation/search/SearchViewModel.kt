@@ -4,8 +4,16 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import ru.nightgoat.itunesalbums.presentation.base.BaseViewModel
 
+/**
+ * ViewModel фрагмента поиска альбомов
+ * @author NightGoat
+ */
 class SearchViewModel : BaseViewModel() {
 
+    /**
+     * Метод поиска альбомов.
+     * @param name название альбома
+     */
     fun searchAlbum(name: String) {
         compositeDisposable.add(
             repository.getAlbumsList(name)

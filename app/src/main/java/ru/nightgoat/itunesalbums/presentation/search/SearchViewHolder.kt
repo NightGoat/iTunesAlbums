@@ -8,6 +8,10 @@ import kotlinx.android.synthetic.main.item_album_card.view.*
 import ru.nightgoat.itunesalbums.R
 import ru.nightgoat.itunesalbums.data.model.Result
 
+/**
+ * ViewHolder поиска альбомов.
+ * @author NightGoat
+ */
 class SearchViewHolder(inflater: LayoutInflater, parent: ViewGroup) :
         RecyclerView.ViewHolder(inflater.inflate(R.layout.item_album_card, parent, false)) {
 

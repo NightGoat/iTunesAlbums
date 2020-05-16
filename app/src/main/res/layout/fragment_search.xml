@@ -13,6 +13,7 @@
         android:layout_margin="8dp"
         android:hint="@string/albums_name"
         app:startIconDrawable="@drawable/ic_search_black_24dp"
+        app:endIconMode="clear_text"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         >
 
@@ -29,10 +30,7 @@
 
     <ProgressBar
         android:id="@+id/frag_search_progress"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:visibility="gone"/>
+        style="@style/ProgressBar"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/frag_search_recycler"

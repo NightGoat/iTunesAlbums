@@ -16,7 +16,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.fragment_search.*
 import ru.nightgoat.itunesalbums.R
 
-
+/**
+ * Основной фрагмент приложения. Содержит строку поиска альбомов и список результатов поиска.
+ * @author NightGoat
+ */
 class SearchFragment : Fragment(), FragmentCallbacks {
 
     companion object {
@@ -50,8 +53,12 @@ class SearchFragment : Fragment(), FragmentCallbacks {
         }
     }
 
+    /**
+     * Метод обработки строки поиска. setOnEditorActionListener обрабатывает кнопку поиск на android клавиатуре.
+     * setOnKeyListener обрабатывает кнопку Enter на физической клавиатуре.
+     */
     private fun searchClickListener() {
-        frag_search_edit.setOnEditorActionListener { v, actionId, event ->
+        frag_search_edit.setOnEditorActionListener { _, actionId, _ ->
             if (actionId == EditorInfo.IME_ACTION_SEARCH ) {
                 frag_search_edit.clearFocus()
                 frag_search_progress.requestFocus()
@@ -59,7 +66,7 @@ class SearchFragment : Fragment(), FragmentCallbacks {
             }
             false
         }
-        frag_search_edit.setOnKeyListener { v, keyCode, event ->
+        frag_search_edit.setOnKeyListener { _, keyCode, _ ->
             if (keyCode == KeyEvent.KEYCODE_ENTER) {
                 frag_search_edit.clearFocus()
                 frag_search_progress.requestFocus()
@@ -100,6 +107,7 @@ class SearchFragment : Fragment(), FragmentCallbacks {
             outState.putString("search", frag_search_edit.text.toString())
         }
     }
+
 
     override fun goToAlbumFragment(albumId: Long) {
         val mainActivity = activity as FragmentCallbacks

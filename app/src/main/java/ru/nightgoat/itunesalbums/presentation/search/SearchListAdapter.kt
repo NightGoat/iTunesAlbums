@@ -5,6 +5,11 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import ru.nightgoat.itunesalbums.data.model.Result
 
+/**
+ * Адаптер для RecyclerView, который содержит список альбомов при поиске.
+ * @author NightGoat
+ * @param fragment Интерфейс, которому передается колбэк нажатия на элемент в списке.
+ */
 class SearchListAdapter(private val fragment: FragmentCallbacks)
     : RecyclerView.Adapter<SearchViewHolder>() {
 
@@ -25,6 +30,9 @@ class SearchListAdapter(private val fragment: FragmentCallbacks)
         holder.bind(album, fragment)
     }
 
+    /**
+     *
+     */
     fun setList(list: List<Result>) {
         this.list = list
         notifyDataSetChanged()

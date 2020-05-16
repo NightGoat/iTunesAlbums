@@ -38,13 +38,11 @@
 
     <TextView
         android:id="@+id/frag_album_name"
-        style="@style/Text"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:textColor="@android:color/black"
-        android:textSize="16sp"
+        style="@style/Text.Title"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/frag_album_cover"
         app:layout_constraintTop_toTopOf="@id/frag_album_cover"
@@ -52,8 +50,8 @@
 
     <TextView
         android:id="@+id/frag_album_artist"
-        style="@style/Text.Accent"
-        app:layout_constraintEnd_toEndOf="parent"
+        style="@style/Text.PrimaryColor"
+        app:layout_constraintEnd_toEndOf="@id/frag_album_name"
         app:layout_constraintStart_toStartOf="@id/frag_album_name"
         app:layout_constraintTop_toBottomOf="@id/frag_album_name"
         tools:text="Beck" />
@@ -81,6 +79,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         app:layout_constraintStart_toEndOf="@id/frag_album_dot"
+        app:layout_constraintEnd_toEndOf="@id/frag_album_name"
         app:layout_constraintTop_toTopOf="@id/frag_album_genre"
         tools:text="2010" />
 
@@ -89,29 +88,24 @@
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_margin="16dp"
-        android:background="@android:color/darker_gray"
+        android:background="@color/colorPrimary"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/frag_album_cover" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/frag_album_recycler"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/frag_album_line"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginLeft="16dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
+        app:layout_constraintStart_toStartOf="@id/frag_album_cover"
+        app:layout_constraintEnd_toEndOf="@id/frag_album_name"
+        app:layout_constraintTop_toBottomOf="@id/frag_album_line"
         tools:listitem="@layout/item_track" />
 
     <ProgressBar
         android:id="@+id/frag_album_progressBar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/ProgressBar"
         android:layout_marginTop="16dp"
-        android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/frag_album_toolbar" />

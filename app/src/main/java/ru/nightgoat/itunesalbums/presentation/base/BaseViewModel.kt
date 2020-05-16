@@ -7,6 +7,10 @@ import ru.nightgoat.itunesalbums.data.model.Result
 import ru.nightgoat.itunesalbums.domain.Repository
 import ru.nightgoat.itunesalbums.domain.RepositoryProvider
 
+/**
+ * Базовая ViewModel.
+ * @author NightGoat
+ */
 abstract class BaseViewModel : ViewModel() {
 
     var repository: Repository = RepositoryProvider.provideRepository()

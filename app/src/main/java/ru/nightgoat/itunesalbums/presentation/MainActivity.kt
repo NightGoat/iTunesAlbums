@@ -9,6 +9,10 @@ import ru.nightgoat.itunesalbums.presentation.search.FragmentCallbacks
 import ru.nightgoat.itunesalbums.presentation.search.FragmentChanger
 import ru.nightgoat.itunesalbums.presentation.search.SearchFragment
 
+/**
+ * Главная активити всего приложения.
+ * @author NightGoat
+ */
 class MainActivity : AppCompatActivity(), FragmentChanger, FragmentCallbacks {
 
     override fun onCreate(savedInstanceState: Bundle?) {
