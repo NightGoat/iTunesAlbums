@@ -18,9 +18,11 @@ abstract class BaseViewModel : ViewModel() {
     val resultListLiveData : MutableLiveData<List<Result>> by lazy {
         MutableLiveData<List<Result>>()
     }
+
     val toastLiveData : MutableLiveData<String> by lazy {
         MutableLiveData<String>()
     }
+
     val isProgressBarVisibleLiveData : MutableLiveData<Boolean> by lazy {
         MutableLiveData<Boolean>()
     }

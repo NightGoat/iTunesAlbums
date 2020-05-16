@@ -5,6 +5,6 @@ package ru.nightgoat.itunesalbums.presentation.search
  * ViewHolder -> ListAdapter -> Fragment -> Activity
  * @author NightGoat
  */
-interface FragmentCallbacks {
-    fun goToAlbumFragment(albumId: Long)
+interface OnItemClickListener {
+    fun onItemClick(albumId: Long)
 }

@@ -10,7 +10,7 @@ import ru.nightgoat.itunesalbums.data.model.Result
  * @author NightGoat
  * @param fragment Интерфейс, которому передается колбэк нажатия на элемент в списке.
  */
-class SearchListAdapter(private val fragment: FragmentCallbacks)
+class SearchListAdapter(private val fragment: OnItemClickListener)
     : RecyclerView.Adapter<SearchViewHolder>() {
 
     private var list: List<Result> = listOf()

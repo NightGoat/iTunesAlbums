@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
+import androidx.core.widget.doAfterTextChanged
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
@@ -20,11 +21,7 @@ import ru.nightgoat.itunesalbums.R
  * Основной фрагмент приложения. Содержит строку поиска альбомов и список результатов поиска.
  * @author NightGoat
  */
-class SearchFragment : Fragment(), FragmentCallbacks {
-
-    companion object {
-        fun newInstance() = SearchFragment()
-    }
+class SearchFragment : Fragment(), OnItemClickListener {
 
     private val viewModel: SearchViewModel by activityViewModels()
     private val listAdapter = SearchListAdapter(this)
@@ -43,6 +40,7 @@ class SearchFragment : Fragment(), FragmentCallbacks {
         }
         observeViewModelLiveData()
         searchClickListener()
+        searchClearClickListener()
         initRecycler()
     }
 
@@ -77,12 +75,23 @@ class SearchFragment : Fragment(), FragmentCallbacks {
             }
             false
         }
+
+    }
+
+    /**
+     * Метод стирающий список при пустой поисковой строки
+     */
+    private fun searchClearClickListener() {
+        frag_search_edit.doAfterTextChanged {
+            if (it.isNullOrEmpty()) listAdapter.setList(listOf())
+        }
     }
 
     private fun observeViewModelLiveData() {
+        lifecycle.addObserver(viewModel)
         with(viewModel) {
             toastLiveData.observe(viewLifecycleOwner, Observer {
-                Toast.makeText(context, it, Toast.LENGTH_SHORT).show()
+                if (it != null) Toast.makeText(context, it, Toast.LENGTH_SHORT).show()
             })
 
             resultListLiveData.observe(viewLifecycleOwner, Observer {
@@ -108,9 +117,8 @@ class SearchFragment : Fragment(), FragmentCallbacks {
         }
     }
 
-
-    override fun goToAlbumFragment(albumId: Long) {
-        val mainActivity = activity as FragmentCallbacks
-        mainActivity.goToAlbumFragment(albumId)
+    override fun onItemClick(albumId: Long) {
+        val mainActivity = activity as OnItemClickListener
+        mainActivity.onItemClick(albumId)
     }
 }

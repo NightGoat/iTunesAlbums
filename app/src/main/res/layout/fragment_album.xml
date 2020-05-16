@@ -7,33 +7,16 @@
     android:layout_height="match_parent"
     tools:context=".presentation.album.AlbumFragment">
 
-    <androidx.constraintlayout.widget.Group
-        android:id="@+id/frag_album_group"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:constraint_referenced_ids="frag_album_artist, frag_album_cover, frag_album_dot,
-       frag_album_genre, frag_album_line, frag_album_name, frag_album_recycler, frag_album_year" />
-
-    <com.google.android.material.appbar.MaterialToolbar
-        android:id="@+id/frag_album_toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:navigationIcon="@drawable/ic_chevron_left_pink_24dp"
-        app:title="Обзор"
-        app:titleTextColor="@color/colorPrimary" />
-
     <ImageView
         android:id="@+id/frag_album_cover"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="16dp"
         android:contentDescription="@string/album_cover"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/frag_album_toolbar"
+        app:layout_constraintTop_toTopOf="parent"
         tools:src="@drawable/ic_launcher_background" />
 
     <TextView
@@ -64,33 +47,17 @@
         app:layout_constraintTop_toBottomOf="@id/frag_album_artist"
         tools:text="Alternative" />
 
-    <TextView
-        android:id="@+id/frag_album_dot"
-        style="@style/Text"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:text="@string/dot_in_the_middle"
-        app:layout_constraintStart_toEndOf="@id/frag_album_genre"
-        app:layout_constraintTop_toTopOf="@id/frag_album_genre" />
 
     <TextView
         android:id="@+id/frag_album_year"
         style="@style/Text"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
-        app:layout_constraintStart_toEndOf="@id/frag_album_dot"
+        app:layout_constraintStart_toEndOf="@id/frag_album_genre"
         app:layout_constraintEnd_toEndOf="@id/frag_album_name"
         app:layout_constraintTop_toTopOf="@id/frag_album_genre"
         tools:text="2010" />
 
-    <View
-        android:id="@+id/frag_album_line"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_margin="16dp"
-        android:background="@color/colorPrimary"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/frag_album_cover" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/frag_album_recycler"
@@ -98,8 +65,11 @@
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="@id/frag_album_cover"
-        app:layout_constraintEnd_toEndOf="@id/frag_album_name"
-        app:layout_constraintTop_toBottomOf="@id/frag_album_line"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/frag_album_cover"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
         tools:listitem="@layout/item_track" />
 
     <ProgressBar
@@ -108,6 +78,6 @@
         android:layout_marginTop="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/frag_album_toolbar" />
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

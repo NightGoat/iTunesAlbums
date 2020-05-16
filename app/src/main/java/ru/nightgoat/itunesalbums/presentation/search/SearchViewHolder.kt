@@ -15,14 +15,14 @@ import ru.nightgoat.itunesalbums.data.model.Result
 class SearchViewHolder(inflater: LayoutInflater, parent: ViewGroup) :
         RecyclerView.ViewHolder(inflater.inflate(R.layout.item_album_card, parent, false)) {
 
-    fun bind(result: Result, fragment: FragmentCallbacks) {
+    fun bind(result: Result, fragment: OnItemClickListener) {
         Glide.with(itemView.context)
             .load(result.artworkUrl100)
             .into(itemView.item_album_card_cover)
         itemView.item_album_card_artist.text = result.artistName
         itemView.item_album_card_name.text = result.collectionName
         itemView.setOnClickListener {
-            fragment.goToAlbumFragment(result.collectionId)
+            fragment.onItemClick(albumId = result.collectionId)
         }
     }
 }

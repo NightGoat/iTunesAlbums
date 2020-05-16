@@ -58,5 +58,9 @@ data class Result (
 
     @SerializedName("primaryGenreName")
     @Expose
-    var primaryGenreName: String?
+    var primaryGenreName: String?,
+
+    @SerializedName("artistViewUrl")
+    @Expose
+    var artistViewUrl: String
 )
