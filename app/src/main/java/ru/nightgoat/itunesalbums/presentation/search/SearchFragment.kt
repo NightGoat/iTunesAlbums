@@ -16,12 +16,14 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.fragment_search.*
 import ru.nightgoat.itunesalbums.R
+import ru.nightgoat.itunesalbums.presentation.OnItemClickListener
 
 /**
  * Основной фрагмент приложения. Содержит строку поиска альбомов и список результатов поиска.
  * @author NightGoat
  */
-class SearchFragment : Fragment(), OnItemClickListener {
+class SearchFragment : Fragment(),
+    OnItemClickListener {
 
     private val viewModel: SearchViewModel by activityViewModels()
     private val listAdapter = SearchListAdapter(this)

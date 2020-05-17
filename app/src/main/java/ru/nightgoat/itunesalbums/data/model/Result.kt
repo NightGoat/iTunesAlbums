@@ -17,6 +17,7 @@ import com.google.gson.annotations.SerializedName
  * @param trackNumber номер трека в альбоме
  * @param releaseDate дата релиза. В формате YYYY-MM-DD HH:MM:SS (2006-10-02T07:00:00Z)
  * @param primaryGenreName жанр альбома
+ * @param artistViewUrl url ссылка на исполнителя на сайте apple
  */
 data class Result (
 

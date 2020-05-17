@@ -4,13 +4,14 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import ru.nightgoat.itunesalbums.data.model.Result
+import ru.nightgoat.itunesalbums.presentation.OnItemClickListener
 
 /**
  * Адаптер для RecyclerView, который содержит список альбомов при поиске.
  * @author NightGoat
- * @param fragment Интерфейс, которому передается колбэк нажатия на элемент в списке.
+ * @param clickListener Интерфейс, которому передается колбэк нажатия на элемент в списке.
  */
-class SearchListAdapter(private val fragment: OnItemClickListener)
+class SearchListAdapter(private val clickListener: OnItemClickListener)
     : RecyclerView.Adapter<SearchViewHolder>() {
 
     private var list: List<Result> = listOf()
@@ -27,12 +28,9 @@ class SearchListAdapter(private val fragment: OnItemClickListener)
 
     override fun onBindViewHolder(holder: SearchViewHolder, position: Int) {
         val album : Result = list[position]
-        holder.bind(album, fragment)
+        holder.bind(album, clickListener)
     }
 
-    /**
-     *
-     */
     fun setList(list: List<Result>) {
         this.list = list
         notifyDataSetChanged()

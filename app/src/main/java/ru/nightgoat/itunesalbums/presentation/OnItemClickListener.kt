@@ -1,4 +1,4 @@
-package ru.nightgoat.itunesalbums.presentation.search
+package ru.nightgoat.itunesalbums.presentation
 
 /**
  * Интерфейс для вызова Фрагмента с информацией об альбоме из ViewHolder.

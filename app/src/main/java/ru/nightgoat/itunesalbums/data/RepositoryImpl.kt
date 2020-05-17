@@ -1,6 +1,5 @@
 package ru.nightgoat.itunesalbums.data
 
-import android.util.Log
 import io.reactivex.Single
 import io.reactivex.schedulers.Schedulers
 import ru.nightgoat.itunesalbums.data.model.ApiAnswer

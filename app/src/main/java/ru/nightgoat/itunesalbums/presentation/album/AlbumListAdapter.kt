@@ -16,16 +16,13 @@ class AlbumListAdapter
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AlbumViewHolder {
         val inflater = LayoutInflater.from(parent.context)
-        return AlbumViewHolder(
-            inflater,
-            parent
-        )
+        return AlbumViewHolder(inflater, parent)
     }
 
     override fun getItemCount(): Int = list.size
 
     override fun onBindViewHolder(holder: AlbumViewHolder, position: Int) {
-        val album : Result = list[position]
+        val album: Result = list[position]
         holder.bind(album)
     }
 

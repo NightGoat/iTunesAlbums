@@ -7,6 +7,11 @@ import kotlinx.android.synthetic.main.activity_album.*
 import ru.nightgoat.itunesalbums.R
 import ru.nightgoat.itunesalbums.presentation.album.AlbumFragment
 
+/**
+ * Активити с фрагментом описания альбома. Если экран большой и в альбомной ориентации - завершается,
+ * так как этот фрагмент появится в MainActivity.
+ * @author NightGoat
+ */
 class AlbumActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -15,7 +20,8 @@ class AlbumActivity : AppCompatActivity() {
 
         if (resources.configuration.orientation
             == Configuration.ORIENTATION_LANDSCAPE
-            && isLarge()) {
+            && isLarge()
+        ) {
             finish()
             return
         }
@@ -33,9 +39,11 @@ class AlbumActivity : AppCompatActivity() {
         }
     }
 
-    private fun isLarge() : Boolean {
-        return ((resources.configuration.screenLayout
-                and Configuration.SCREENLAYOUT_SIZE_MASK)
+    /**
+     * Метод определяющий большой ли экран.
+     */
+    private fun isLarge(): Boolean {
+        return ((resources.configuration.screenLayout and Configuration.SCREENLAYOUT_SIZE_MASK)
                 >= Configuration.SCREENLAYOUT_SIZE_LARGE)
     }
 }

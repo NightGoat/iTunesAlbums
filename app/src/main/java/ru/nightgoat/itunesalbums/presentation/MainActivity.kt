@@ -7,15 +7,16 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentContainerView
 import ru.nightgoat.itunesalbums.R
 import ru.nightgoat.itunesalbums.presentation.album.AlbumFragment
-import ru.nightgoat.itunesalbums.presentation.search.OnItemClickListener
-import ru.nightgoat.itunesalbums.presentation.search.FragmentChanger
-import kotlin.properties.Delegates
 
 /**
- * Главная активити всего приложения.
+ * Активити экрана поиска. Если экран большой и в альбомной ориентации то показывает два фрагмента
+ * одновременно.
  * @author NightGoat
+ * isLandOrientationOnBugScreen - параметр определяющий есть ли на экране контейнер для
+ * фрагмента с альбомом. Определяется макетом layout.
  */
-class MainActivity : AppCompatActivity(), OnItemClickListener {
+class MainActivity : AppCompatActivity(),
+    OnItemClickListener {
 
     var isLandOrientationOnBigScreen: Boolean = true
     var albumId = -1L
