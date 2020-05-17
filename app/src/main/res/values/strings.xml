@@ -3,4 +3,5 @@
     <string name="albums_name">Название альбома</string>
     <string name="album_cover">Обложка альбома</string>
     <string name="dot_in_the_middle">&#8226;</string>
+    <string name="defaultAlbumTitle">Обзор</string>
 </resources>

@@ -13,6 +13,7 @@
         android:layout_margin="8dp"
         android:hint="@string/albums_name"
         app:startIconDrawable="@drawable/ic_search_black_24dp"
+        app:endIconMode="clear_text"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         >
 
@@ -22,15 +23,23 @@
             android:layout_height="wrap_content"
             android:inputType="textCapSentences"
             android:imeOptions="actionSearch"
+            android:textColorHint="@android:color/transparent"
             />
 
     </com.google.android.material.textfield.TextInputLayout>
 
+    <ProgressBar
+        android:id="@+id/frag_search_progress"
+        style="@style/ProgressBar"/>
+
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/frag_search_recycler"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
         tools:listitem="@layout/item_album_card"
         />
+
+
 
 </LinearLayout>
