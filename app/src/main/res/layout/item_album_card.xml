@@ -5,7 +5,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     app:cardCornerRadius="4dp"
-    app:cardElevation="4dp">
+    app:cardElevation="4dp"
+    android:layout_marginTop="2dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -14,12 +15,11 @@
 
         <ImageView
             android:id="@+id/item_album_card_cover"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            style="@style/AlbumCover"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:contentDescription="@string/album_cover"
-            tools:src="@drawable/ic_launcher_background"/>
+            tools:src="@drawable/ic_launcher_background"
+            android:contentDescription="@string/album_cover" />
 
         <TextView
             android:id="@+id/item_album_card_name"

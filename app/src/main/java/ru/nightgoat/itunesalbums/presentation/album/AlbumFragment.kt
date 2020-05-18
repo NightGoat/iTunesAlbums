@@ -3,7 +3,6 @@ package ru.nightgoat.itunesalbums.presentation.album
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -85,7 +84,7 @@ class AlbumFragment : Fragment() {
                 if (it != null) Toast.makeText(context, it, Toast.LENGTH_SHORT).show()
             })
 
-            resultListLiveData.observe(viewLifecycleOwner, Observer {
+            albumResultListLiveData.observe(viewLifecycleOwner, Observer {
                 val albumInfo = it[0]
                 Glide.with(context).load(albumInfo.artworkUrl100).into(frag_album_cover)
                 frag_album_artist.text = albumInfo.artistName

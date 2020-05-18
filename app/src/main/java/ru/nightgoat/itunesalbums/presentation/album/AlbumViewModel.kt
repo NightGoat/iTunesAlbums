@@ -17,9 +17,10 @@ import java.net.UnknownHostException
 class AlbumViewModel : BaseViewModel(), LifecycleObserver {
 
     @OnLifecycleEvent(Lifecycle.Event.ON_CREATE)
-    fun onCreate(){
+    fun onCreate() {
         toastLiveData.value = null
     }
+
     /**
      * Метод получения описания альбома. CompositeDisposable.dispose() и LiveData в BaseViewModel
      * @param albumId id альбома
@@ -30,9 +31,6 @@ class AlbumViewModel : BaseViewModel(), LifecycleObserver {
             compositeDisposable.add(
                 repository.getAlbum(albumId)
                     .observeOn(AndroidSchedulers.mainThread())
-                    .map {
-                        it.results
-                    }
                     .doOnSubscribe {
                         isProgressBarVisibleLiveData.value = true
                     }
@@ -40,7 +38,7 @@ class AlbumViewModel : BaseViewModel(), LifecycleObserver {
                         isProgressBarVisibleLiveData.value = false
                     }
                     .subscribe({
-                        resultListLiveData.value = it
+                        albumResultListLiveData.value = it
                     }, {
                         when (it) {
                             is UnknownHostException -> {

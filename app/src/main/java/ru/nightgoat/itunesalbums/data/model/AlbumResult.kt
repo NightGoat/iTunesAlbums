@@ -19,7 +19,7 @@ import com.google.gson.annotations.SerializedName
  * @param primaryGenreName жанр альбома
  * @param artistViewUrl url ссылка на исполнителя на сайте apple
  */
-data class Result (
+data class AlbumResult(
 
     @SerializedName("wrapperType")
     @Expose

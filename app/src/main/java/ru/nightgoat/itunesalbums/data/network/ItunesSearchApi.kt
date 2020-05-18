@@ -26,11 +26,11 @@ interface ItunesSearchApi {
      */
     @GET("search?")
     fun getAlbumList(
-        @Query("term") album : String,
+        @Query("term") album: String,
         @Query("media") media: String = "music",
-        @Query("entity") entity : String = "album",
-        @Query("attribute") attribute : String = "albumTerm"
-    ) : Single<ApiAnswer>
+        @Query("entity") entity: String = "album",
+        @Query("attribute") attribute: String = "albumTerm"
+    ): Single<ApiAnswer>
 
     /**
      * Метод получения подробной информации об альбоме.
@@ -40,8 +40,8 @@ interface ItunesSearchApi {
     @GET("lookup?")
     fun getAlbum(
         @Query("id") albumId: Long,
-        @Query("entity") entity : String = "song"
-    ) : Single<ApiAnswer>
+        @Query("entity") entity: String = "song"
+    ): Single<ApiAnswer>
 
     companion object {
         fun create(): ItunesSearchApi {

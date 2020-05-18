@@ -8,7 +8,11 @@ import ru.nightgoat.itunesalbums.data.network.ItunesSearchApi
  * @author NightGoat
  */
 object RepositoryProvider {
-    fun provideRepository(): Repository {
+    fun provideTestRepository(api: ItunesSearchApi): Repository {
+        return RepositoryImpl(api)
+    }
+
+    fun provideItunesApiRepository(): Repository {
         return RepositoryImpl(ItunesSearchApi.create())
     }
 }

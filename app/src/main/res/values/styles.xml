@@ -31,4 +31,9 @@
         <item name="android:visibility">gone</item>
         <item name="android:layout_gravity">center</item>
     </style>
+
+    <style name="AlbumCover">
+        <item name="android:layout_height">100dp</item>
+        <item name="android:layout_width">100dp</item>
+    </style>
 </resources>

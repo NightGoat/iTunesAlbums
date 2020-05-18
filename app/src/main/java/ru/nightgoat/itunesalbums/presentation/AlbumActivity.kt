@@ -18,10 +18,7 @@ class AlbumActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_album)
 
-        if (resources.configuration.orientation
-            == Configuration.ORIENTATION_LANDSCAPE
-            && isLarge()
-        ) {
+        if (resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE && isLarge()) {
             finish()
             return
         }
@@ -34,7 +31,7 @@ class AlbumActivity : AppCompatActivity() {
                 .commit()
         }
 
-        activity_album_toolbar.setOnClickListener {
+        activity_album_toolbar.setNavigationOnClickListener {
             finish()
         }
     }

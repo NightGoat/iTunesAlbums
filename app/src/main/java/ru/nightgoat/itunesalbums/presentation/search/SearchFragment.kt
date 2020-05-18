@@ -59,7 +59,7 @@ class SearchFragment : Fragment(),
      */
     private fun searchClickListener() {
         frag_search_edit.setOnEditorActionListener { _, actionId, _ ->
-            if (actionId == EditorInfo.IME_ACTION_SEARCH ) {
+            if (actionId == EditorInfo.IME_ACTION_SEARCH) {
                 frag_search_edit.clearFocus()
                 frag_search_progress.requestFocus()
                 viewModel.searchAlbum(frag_search_edit.text.toString())
@@ -71,7 +71,8 @@ class SearchFragment : Fragment(),
                 frag_search_edit.clearFocus()
                 frag_search_progress.requestFocus()
                 viewModel.searchAlbum(frag_search_edit.text.toString())
-                val imm = activity?.getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
+                val imm =
+                    activity?.getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
                 imm.hideSoftInputFromWindow(view?.windowToken, 0)
                 view?.clearFocus()
             }
@@ -96,7 +97,7 @@ class SearchFragment : Fragment(),
                 if (it != null) Toast.makeText(context, it, Toast.LENGTH_SHORT).show()
             })
 
-            resultListLiveData.observe(viewLifecycleOwner, Observer {
+            albumResultListLiveData.observe(viewLifecycleOwner, Observer {
                 listAdapter.setList(it)
             })
 

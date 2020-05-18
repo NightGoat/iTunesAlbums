@@ -3,7 +3,7 @@ package ru.nightgoat.itunesalbums.presentation.search
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import ru.nightgoat.itunesalbums.data.model.Result
+import ru.nightgoat.itunesalbums.data.model.AlbumResult
 import ru.nightgoat.itunesalbums.presentation.OnItemClickListener
 
 /**
@@ -11,10 +11,10 @@ import ru.nightgoat.itunesalbums.presentation.OnItemClickListener
  * @author NightGoat
  * @param clickListener Интерфейс, которому передается колбэк нажатия на элемент в списке.
  */
-class SearchListAdapter(private val clickListener: OnItemClickListener)
-    : RecyclerView.Adapter<SearchViewHolder>() {
+class SearchListAdapter(private val clickListener: OnItemClickListener) :
+    RecyclerView.Adapter<SearchViewHolder>() {
 
-    private var list: List<Result> = listOf()
+    private var list: List<AlbumResult> = listOf()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SearchViewHolder {
         val inflater = LayoutInflater.from(parent.context)
@@ -27,11 +27,11 @@ class SearchListAdapter(private val clickListener: OnItemClickListener)
     override fun getItemCount(): Int = list.size
 
     override fun onBindViewHolder(holder: SearchViewHolder, position: Int) {
-        val album : Result = list[position]
+        val album: AlbumResult = list[position]
         holder.bind(album, clickListener)
     }
 
-    fun setList(list: List<Result>) {
+    fun setList(list: List<AlbumResult>) {
         this.list = list
         notifyDataSetChanged()
     }

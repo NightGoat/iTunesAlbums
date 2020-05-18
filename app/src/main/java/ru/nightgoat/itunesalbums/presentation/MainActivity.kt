@@ -15,8 +15,7 @@ import ru.nightgoat.itunesalbums.presentation.album.AlbumFragment
  * isLandOrientationOnBugScreen - параметр определяющий есть ли на экране контейнер для
  * фрагмента с альбомом. Определяется макетом layout.
  */
-class MainActivity : AppCompatActivity(),
-    OnItemClickListener {
+class MainActivity : AppCompatActivity(), OnItemClickListener {
 
     var isLandOrientationOnBigScreen: Boolean = true
     var albumId = -1L
@@ -24,18 +23,19 @@ class MainActivity : AppCompatActivity(),
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        if (savedInstanceState != null)
-            albumId = savedInstanceState.getLong("albumId")
+        if (savedInstanceState != null) albumId = savedInstanceState.getLong("albumId")
+
         isLandOrientationOnBigScreen =
             (findViewById<FragmentContainerView>(R.id.activity_main_fragment_container) != null)
-        if (isLandOrientationOnBigScreen)
-            showAlbumFragment()
+
+        if (isLandOrientationOnBigScreen) showAlbumFragment()
     }
 
     private fun showAlbumFragment() {
         if (isLandOrientationOnBigScreen) {
             var albumFragment =
-                supportFragmentManager.findFragmentById(R.id.activity_main_fragment_container) as AlbumFragment?
+                supportFragmentManager.findFragmentById(R.id.activity_main_fragment_container)
+                        as AlbumFragment?
             if (albumFragment == null || albumFragment.getAlbumId() != albumId) {
                 albumFragment = AlbumFragment.newInstance(albumId)
                 changeFragment(albumFragment)
@@ -46,7 +46,6 @@ class MainActivity : AppCompatActivity(),
                     .putExtra("albumId", albumId)
             )
         }
-
     }
 
     override fun onItemClick(albumId: Long) {

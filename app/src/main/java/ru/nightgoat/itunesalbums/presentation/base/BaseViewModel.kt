@@ -3,7 +3,7 @@ package ru.nightgoat.itunesalbums.presentation.base
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import io.reactivex.disposables.CompositeDisposable
-import ru.nightgoat.itunesalbums.data.model.Result
+import ru.nightgoat.itunesalbums.data.model.AlbumResult
 import ru.nightgoat.itunesalbums.domain.Repository
 import ru.nightgoat.itunesalbums.domain.RepositoryProvider
 
@@ -13,17 +13,17 @@ import ru.nightgoat.itunesalbums.domain.RepositoryProvider
  */
 abstract class BaseViewModel : ViewModel() {
 
-    var repository: Repository = RepositoryProvider.provideRepository()
+    var repository: Repository = RepositoryProvider.provideItunesApiRepository()
 
-    val resultListLiveData : MutableLiveData<List<Result>> by lazy {
-        MutableLiveData<List<Result>>()
+    val albumResultListLiveData: MutableLiveData<List<AlbumResult>> by lazy {
+        MutableLiveData<List<AlbumResult>>()
     }
 
-    val toastLiveData : MutableLiveData<String> by lazy {
+    val toastLiveData: MutableLiveData<String> by lazy {
         MutableLiveData<String>()
     }
 
-    val isProgressBarVisibleLiveData : MutableLiveData<Boolean> by lazy {
+    val isProgressBarVisibleLiveData: MutableLiveData<Boolean> by lazy {
         MutableLiveData<Boolean>()
     }
 

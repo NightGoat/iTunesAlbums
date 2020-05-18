@@ -9,8 +9,7 @@
 
     <ImageView
         android:id="@+id/frag_album_cover"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        style="@style/AlbumCover"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="16dp"
@@ -53,8 +52,8 @@
         style="@style/Text"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
-        app:layout_constraintStart_toEndOf="@id/frag_album_genre"
         app:layout_constraintEnd_toEndOf="@id/frag_album_name"
+        app:layout_constraintStart_toEndOf="@id/frag_album_genre"
         app:layout_constraintTop_toTopOf="@id/frag_album_genre"
         tools:text="2010" />
 
@@ -63,13 +62,14 @@
         android:id="@+id/frag_album_recycler"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@id/frag_album_cover"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/frag_album_cover"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
+        android:paddingBottom="?attr/actionBarSize"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/frag_album_cover"
+        app:layout_constraintTop_toBottomOf="@id/frag_album_cover"
         tools:listitem="@layout/item_track" />
 
     <ProgressBar
